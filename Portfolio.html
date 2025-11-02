@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         /* Base Styles */
+  :root {
+    --primary-color: #555555;
+    --secondary-color: #2c2c2c;
+    --accent-color: #888888;
+    --light-color: #f5f5f5;
+    --dark-color: #1a1a1a;
+    --text-color: #333333;
+    --text-light: #666666;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+     }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #3a3a3a, #1a1a1a);
+      color: white;
+      padding: 150px 0 100px;
+     text-align: center;
+    }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero .btn {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+       .hero .btn:hover {
+         background-color: var(--light-color);
+         color: var(--secondary-color);
+       }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category h3 i {
+            margin-right: 10px;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            margin: 0 5px 10px;
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(42, 42, 42, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+			justify-content: center;
+           
+
+        }
+
+        .contact-info {
+            flex: 1;
+			text-align: center;
+			justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+			text-align: center;
+			justify-content: center;
+			
+
+        }
+
+        .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+		   text-align: center;
+			justify-content: center;
+
+        }
+
+ 
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-img, .about-text, .contact-info, .contact-form {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Portfolio</a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Maropeng Vanessa Malemela here!</h1>
+            <p>I'm a junior support technician that is passionate about providing end users with ease of use and access to technological components.</p>
+            <a href="#portfolio" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="images/P1.jpeg" alt="About Me">
+                </div>
+                <div class="about-text">
+                    <h3>Hi,this is Maropeng Vanessa Malemela</h3>
+                    <p>A final year IT student specializing in communication networks and cybersecurity,equipped with a strong foundation in both technical and soft skills.</p>
+                    <p>My learning has equipped me with a deep understanding of network protocols, security measures and threat analysis,while,my soft skills enhance my ability to collaborate effectively and communicate complex concepts. I am dedicated to continuous learning and staying updated with the latest advancements in technology.</p>
+                    <p>With a clear career aspiration of becoming a cybersecurity specialist, I am eager to apply my knowledge and skills to help organizations protect their digital assets and create a more secure online environment.</p>
+                    <a href="#contact" class="btn">Feel free to reach out to me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Certifications</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Operating Systems(Win11/10/8,Linux Ubuntu,ParrotOS,Kali,Zorin,Metasploitable2)</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Virtualization</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Cisco Switching and Routing</span>
+                        </div>
+                    </div>
+					 <div class="skill-item">
+                        <div class="skill-name">
+                            <span>System Admnistration</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Java</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Cisco Packet Tracer</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>VMware/VirtualBox</span>
+                        </div>
+                    </div>
+					 <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Microsoft 365</span>
+                        </div>
+                    </div>
+					 <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Windows/Linux</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>GitHub</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>NetBeans/VS code</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                    <div class="certification-item" onclick="window.open('certs/C2.pdf', '_blank')">
+					
+                        <h4>Cisco Introduction to Cybersecurity</h4>
+                        <p>Cisco,2025</p>
+                    </div>
+                    <div class="certification-item" onclick="window.open('certs/C3.pdf', '_blank')">
+                        <h4>Cisco Network Basics</h4>
+                        <p>Cisco,2025</p>
+                    </div>
+					<div class="certification-item" onclick="window.open('certs/C2.pdf', '_blank')">
+                        <h4>AWS Cloud Foundations</h4>
+                        <p>AWS,2025</p>
+                    </div>
+                    <div class="certification-item" onclick="window.open('certs/C4.pdf', '_blank')">
+                        <h4>OCI Foundations Associate</h4>
+                        <p>Oracle,2025</p>
+                    </div>
+                    <div class="certification-item" onclick="window.open('certs/C2.pdf', '_blank')">
+                        <h4>Full Stack Web Development</h4>
+                        <p>FNB Academy,2025</p>
+                    </div>
+					<div class="certification-item" onclick="window.open('certs/C1.pdf', '_blank')">
+                        <h4>Cisco Ethical Hacker</h4>
+                        <p>Cisco,2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <h2>My Portfolio</h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="net">Network Configuration and Simulations</button>
+                <button class="filter-btn" data-filter="linux">Penetration Testing and Security Implementation</button>
+				<button class="filter-btn" data-filter="virt">Virtualization</button>
+                <button class="filter-btn" data-filter="java">Java Applications</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="linux">
+                    <img src="images/pen1.png" alt="Project 1" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Pentbox on Ubuntu</h3>
+                        <p>A project that explores the workings of pentbox on Ubuntu.</p>
+                        <a href="vids/vid1.mp4" target="_blank" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="net">
+                    <img src="images/net1.png" alt="Project 2" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Windows Server 2016 and Windows 10 Network Simulation</h3>
+                        <p>A project that focuses on simulating an organization where Active Directory,Group policy and other practices have to be implemented on the network to ensure strict policies to govern user access and permissions.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="virt">
+                    <img src="images/virt2.png" alt="Project 4" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>File Transfer between Windows host and Linux Zorin vm and Vice Versa</h3>
+                        <p>A file transfer project that focuses on the practice of remotely sharing a text file between a Windows host and Linux vm.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+            </div>
+			<div class="portfolio-item" data-category="virt">
+                    <img src="images/virt1.png" alt="Project 4" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Rocky Linux Installation</h3>
+                        <p>A simple showing of the installation process of a rocky linux vm on vmware.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+		     <div class="portfolio-item" data-category="java">
+                    <img src="images/java1.png" alt="Project 3" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Event Management System</h3>
+                        <p>A comprehensive event management system built using Java that provides basic GUI interactions and File management actions</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+			
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Connect with me</h3>
+                    <p>I am always open to exploring new opportunities and collaborations.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Pretoria/Polokwane</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>mmalemela884@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>(+27)790594267</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="footer-logo">Portfolio</a>
+                    <p>Bringing ease of use to end users while prioritizing highest quality of service </p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="#home" style="color: white; text-decoration: none;">Home</a></li>
+                        <li><a href="#about" style="color: white; text-decoration: none;">About</a></li>
+                        <li><a href="#skills" style="color: white; text-decoration: none;">Skills</a></li>
+                        <li><a href="#portfolio" style="color: white; text-decoration: none;">Portfolio</a></li>
+                        <li><a href="#contact" style="color: white; text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Me</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/maropeng-malemela" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Maropeng20" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Maropeng Vanessa Malemela. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+	
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Portfolio Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+ 
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
